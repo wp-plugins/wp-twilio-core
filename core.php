@@ -1,16 +1,16 @@
 <?php
 /**
  * Plugin Name: WP Twilio Core
- * Plugin URI: http://themebound.com/shop/wp-twilio-core/
+ * Plugin URI: https://themebound.com/shop/wp-twilio-core/
  * Description: A simple plugin to add SMS capability to your website using the Twilio API. Allows developers to easily extend the settings page and built in functionality.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Themebound.com
- * Author URI: http://themebound.com
+ * Author URI: https://themebound.com
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-define( 'TWL_CORE_VERSION', '1.0.1' );
+define( 'TWL_CORE_VERSION', '1.0.2' );
 define( 'TWL_CORE_OPTION', 'twl_option' );
 define( 'TWL_CORE_OPTION_PAGE', 'twilio-options' );
 define( 'TWL_CORE_SETTING', 'twilio-options' );
@@ -49,10 +49,11 @@ class WP_Twilio_Core {
 			add_action( 'admin_init', array( $this, 'register_settings' ), 1000 );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 1000 );
 
-			/** User Profile Settings **/
-			if( isset( $options['mobile_field'] ) && $options['mobile_field'] ) {
-				add_filter( 'user_contactmethods', 'twl_add_contact_item', 10 );
-			}
+		}
+
+		/** User Profile Settings **/
+		if( isset( $options['mobile_field'] ) && $options['mobile_field'] ) {
+			add_filter( 'user_contactmethods', 'twl_add_contact_item', 10 );
 		}
 	}
 
